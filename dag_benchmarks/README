@@ -1,0 +1,88 @@
+==================================================================================
+- The structures of LU, Cholesky, and Heat folders are very similar. So in this file, I 
+use LU as an example. Cholesky and Heat have similar set of executables and code structure.
+
+- Only in the usage section (section 4), each program's usage will be mentioned separately.
+
+
+Structure for LU folder:
+
+1. Compilation:
+The Makefile has 4 make targets:
+- make regular: to create executable files for Cilk Plus and OpenMP versions (i.e., lu_cilk and lu_omp)
+- make cilkview: to create an executable files that can be run with cilkview (it uses GCC 4.8 instead of the default GCC 5.1.0).
+The name of this executable is lu_cilk_cv
+- make par: to create executable files for profiling (lu_cilk_par and lu_omp_par) that can run multiple instances on different cores at the same time. 
+But you probably don't need to use them. 
+- make cilkprof: to create a Cilkprof-instrumented executable (namely, lu_cilk_cp). This is used to measure work and span of the benchmark in time (seconds).
+
+=========
+2. Executables: 
+- lu_cilk: LU implementation with Cilk Plus
+- lu_omp: LU implementation with OpenMP
+- lu_cilk_cv: an executable to run with cilkview
+- lu_cilk_par, lu_omp_par: Cilk Plus and OpenMP that can run multiple instances at the same time (just for saving time when profiling)
+- lu_cilk_cp: Cilkprof-instrumented executable. Run this executable as normal; there is no difference compared to running lu_cilk.
+
+=========
+3. Source code files:
+- lu.c: the main file that implements LU.
+- lu_par.c: the same as lu.c but supports running multiple processes simultaneously. This is only used for profiling.
+
+
+More details about lu.c:
+- The main() function calls to 3 functions: init(), run(), and finalize()
+- init() binds the process to a set of cores based on the number of cores indicated in the command line. For example: if 5 cores are used, the program will bind to core 0-4. It also sets up the number of threads for Cilk Plus and OpenMP respectively.
+- run() runs the real computation and records time and write to a file. The path of the output file is indicated at the top of run().
+- finalize() just does cleanup stuffs
+
+=========
+4. Usage:
+4.1. For LU:
+
+For CilkPlus: ./lu_cilk <num_cores> [n N] [-c]
+For OpenMP:   ./lu_omp 	<num_cores>	[n N] [-c]
+
+Required parameters:
+- "num_cores": is the number of cores this program will run on
+
+Optional parameters:
+- "n N": is the size of the input matrix. The matrix will then be (N x N) matrix. N must be power of 2 and at least 16.
+  If it is not indicated, the default size is used.
+- "-c": use this if you want to check the correctness of the program
+
+
+4.2. For Cholesky
+
+For Cilk Plus: ./ch_cilk <num_cores>  [n N]
+For OpenMP:    ./ch_omp	 <num_cores>  [n N]
+
+Required parameters:
+- "num_cores": is the number of cores this program will run on
+
+Optional parameters:
+- "n N": is the size of the input matrix. The matrix will then be (N x N) matrix. N does not need to be power of 2. 
+  If it is not indicated, the default size is used.
+
+
+4.3. For Heat Diffusion
+
+For Cilk Plus: ./heat_cilk <num_cores>	[nx NX] [ny NY] [nt NT]
+For OpenMP:	   ./heat_omp  <num_cores>	[nx NX] [ny NY] [nt NT]
+
+Required parameters:
+- "num_cores": is the number of cores this program will run on
+
+Optional parameters:
+- "nx NX": number of rows
+- "ny NY": number of columns
+- "nt NT": number of time steps
+
+
+=========
+5. Other notes:
+- The base case size can be changed by changing BLOCK_SIZE definition at the top of lu.c
+- Currently the base case is 32*32
+- We were trying to measure only the run() function for each benchmark with Cilkview but it turns out the 
+Cilkview API to do that (__cilkview_query(), __cilkview_report(),...) can only compiled using Intel Compiler. 
+They are compiled away with GCC. Hence we cannot measure a specific region with GCC-compiled binary. 

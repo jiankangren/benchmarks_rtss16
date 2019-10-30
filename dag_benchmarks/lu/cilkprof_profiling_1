@@ -1,0 +1,74 @@
+START RUNNING LU (Cilkprof) ............
+LU n = 128
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 0, span_table->lg_capacity = 2
+work_table->list_size = 0, work_table->table_size = 0, work_table->lg_capacity = 2
+work = 0.000000s, span = 0.000000s, parallelism = -nan
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 0, span_table->lg_capacity = 2
+work_table->list_size = 0, work_table->table_size = 0, work_table->lg_capacity = 2
+work = 0.000000s, span = 0.000000s, parallelism = -nan
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 28, span_table->lg_capacity = 6
+work_table->list_size = 0, work_table->table_size = 51, work_table->lg_capacity = 6
+work = 0.013386s, span = 0.006950s, parallelism = 1.926069
+
+
+LU n = 256
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 0, span_table->lg_capacity = 2
+work_table->list_size = 0, work_table->table_size = 0, work_table->lg_capacity = 2
+work = 0.000000s, span = 0.000000s, parallelism = -nan
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 0, span_table->lg_capacity = 2
+work_table->list_size = 0, work_table->table_size = 0, work_table->lg_capacity = 2
+work = 0.000000s, span = 0.000000s, parallelism = -nan
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 37, span_table->lg_capacity = 6
+work_table->list_size = 0, work_table->table_size = 51, work_table->lg_capacity = 6
+work = 0.093049s, span = 0.021573s, parallelism = 4.313129
+
+
+LU n = 512
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 0, span_table->lg_capacity = 2
+work_table->list_size = 0, work_table->table_size = 0, work_table->lg_capacity = 2
+work = 0.000000s, span = 0.000000s, parallelism = -nan
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 0, span_table->lg_capacity = 2
+work_table->list_size = 0, work_table->table_size = 0, work_table->lg_capacity = 2
+work = 0.000000s, span = 0.000000s, parallelism = -nan
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 41, span_table->lg_capacity = 6
+work_table->list_size = 0, work_table->table_size = 51, work_table->lg_capacity = 6
+work = 0.704079s, span = 0.066428s, parallelism = 10.599062
+
+
+LU n = 1024
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 0, span_table->lg_capacity = 2
+work_table->list_size = 0, work_table->table_size = 0, work_table->lg_capacity = 2
+work = 0.000000s, span = 0.000000s, parallelism = -nan
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 0, span_table->lg_capacity = 2
+work_table->list_size = 0, work_table->table_size = 0, work_table->lg_capacity = 2
+work = 0.000000s, span = 0.000000s, parallelism = -nan
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 41, span_table->lg_capacity = 6
+work_table->list_size = 0, work_table->table_size = 51, work_table->lg_capacity = 6
+work = 5.389377s, span = 0.204486s, parallelism = 26.355715
+
+
+LU n = 2048
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 0, span_table->lg_capacity = 2
+work_table->list_size = 0, work_table->table_size = 0, work_table->lg_capacity = 2
+work = 0.000000s, span = 0.000000s, parallelism = -nan
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 0, span_table->lg_capacity = 2
+work_table->list_size = 0, work_table->table_size = 0, work_table->lg_capacity = 2
+work = 0.000000s, span = 0.000000s, parallelism = -nan
+Forcing CILK_NWORKERS=1.
+span_table->list_size = 0, span_table->table_size = 41, span_table->lg_capacity = 6
+work_table->list_size = 0, work_table->table_size = 51, work_table->lg_capacity = 6
+work = 41.670877s, span = 0.642975s, parallelism = 64.809456
